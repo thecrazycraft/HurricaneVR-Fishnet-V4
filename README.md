@@ -26,9 +26,12 @@ Tested:
     - Test in the editor and/or build a client
     - If you wanted to connect a second client you would need to change the auto start type to Client and then set the Tugboat.ClientAddress to the host's IP address
 
+## Hand Posing
+To set it up, add the `FFSHandPoser` to the player’s physics hands, and the `FFSNetworkHandPoser` to the network player’s IK hands, and assign all the references. Other than that, the grabbables don’t need any setup, but make sure they’re networked objects. Note that this doesn’t support secondary poses or specific grab points at this time.
 
 ## Notes
 - There is currently a problem with scaling socketed items
 - All networked grabbables should start with their transforms being in world space, if parented all parents must have their position and rotation at 0, and their scale at 1. 
 *This should be resolved, all grabbables unparent when the game starts to ensure server and clients are syncing correctly.
 - All NetworkGrabbles return to server authority when a client disconnects to prevent them from being removed from the scene.
+- The example scene has not been updated since forking; it might not work correctly and does not contain hand pose synchronization.

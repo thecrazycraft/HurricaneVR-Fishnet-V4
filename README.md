@@ -1,14 +1,15 @@
 # Hurricane VR Fishnet Example Project
 This project shows how to implement [Fishnet](https://assetstore.unity.com/packages/tools/network/fish-net-networking-evolved-207815) for [Hurricane VR](https://assetstore.unity.com/packages/tools/physics/hurricane-vr-physics-interaction-toolkit-177300). Only some parts of HurricaneVR are networked, such as: Player, Grabbables, Socketing, Destructibles, and Damage.
 
-This project is intended to have a dedicated server and has not been fully tested in client hosted mode.
+~~This project is intended to have a dedicated server and has not been fully tested in client hosted mode.~~
+This project **is** intended for client hosted mode.
 
 Tested:
-- Unity 2022.3.11f1
-- Fishnet Version: 3.11.7R
-- Hurricane VR Version: 2.9.1i
+- Unity 2022.3.24f1
+- Fishnet Version: 4.5.2R
+- Hurricane VR Version: 2.9.2
 - Windows/Linux Server build
-- Quest 3 client build
+- Quest 2 client build
 
 ## Getting Started
 - Setup a Unity project that contains both Fishnet and Hurricane VR

@@ -6,7 +6,7 @@ using HurricaneVR.Framework.Weapons;
 using HurricaneVR.Framework.Weapons.Guns;
 using UnityEngine;
 
-public class CustomHVRGunBase : HVRGunBase 
+public class CustomHVRGunBase : HVRGunBase
 {
     [SerializeField]
     private bool ejectCasingOnHandleEjected = false;
@@ -22,6 +22,7 @@ public class CustomHVRGunBase : HVRGunBase
     private float ShotRadius = 0.05f;
     [SerializeField]
     private float BurstCooldown = 0.2f;
+
     protected override void Awake()
     {
         base.Awake();

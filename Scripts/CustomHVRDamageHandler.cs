@@ -63,7 +63,7 @@ public class CustomHVRDamageHandler : HVRDamageHandler
 
     public override void HandleDamageProvider(HVRDamageProvider damageProvider, Vector3 hitPoint, Vector3 direction)
     {
-        if (networkDamageHandler.IsServer)
+        if (networkDamageHandler.IsServerStarted)
         {
             base.HandleDamageProvider(damageProvider, hitPoint, direction);
             ServerDamageTaken.Invoke(damageProvider.Damage, hitPoint, direction);
@@ -72,7 +72,7 @@ public class CustomHVRDamageHandler : HVRDamageHandler
 
     public void HandleDamageProvider(HVRDamageProvider damageProvider, Vector3 hitPoint, Vector3 direction, float damageMultiplier)
     {
-        if (networkDamageHandler.IsServer)
+        if (networkDamageHandler.IsServerStarted)
         {
             //base.HandleDamageProvider(damageProvider, hitPoint, direction);
             TakeDamage(damageProvider.Damage * damageMultiplier);

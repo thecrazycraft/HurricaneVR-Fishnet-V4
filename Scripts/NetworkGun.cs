@@ -12,7 +12,7 @@ public class NetworkGun : NetworkBehaviour
 {
     private CustomHVRGunBase hVRGunBase;
 
-    [SyncVar(WritePermissions = WritePermission.ServerOnly)]
+    //[SyncVar(WritePermissions = WritePermission.ServerOnly)]
     public bool isChambered;
 
     private void Awake()
@@ -45,7 +45,7 @@ public class NetworkGun : NetworkBehaviour
         {
             RPCShoot();
             //The gun chambers after firing and has run out of ammo
-            if(hVRGunBase.ChambersAfterFiring && hVRGunBase.Ammo && !hVRGunBase.Ammo.HasAmmo)
+            if (hVRGunBase.ChambersAfterFiring && hVRGunBase.Ammo && !hVRGunBase.Ammo.HasAmmo)
             {
                 RPCChambered(false);
             }
@@ -59,6 +59,7 @@ public class NetworkGun : NetworkBehaviour
         hVRGunBase.RequiresAmmo = false;
         hVRGunBase.RequiresChamberedBullet = false;
     }
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -89,23 +90,22 @@ public class NetworkGun : NetworkBehaviour
     [ServerRpc(RequireOwnership = true)]
     private void RPCShoot()
     {
-        if (!Owner.IsHost)
-        {
-            hVRGunBase.NetworkShoot();
-        }
         ObserversShoot();
     }
+
     [ObserversRpc(ExcludeOwner = true)]
     private void ObserversShoot()
     {
         hVRGunBase.NetworkShoot();
     }
+
     [ServerRpc(RequireOwnership = true)]
     private void RPCChambered(bool chambered)
     {
         isChambered = chambered;
         ObserversChambered();
     }
+
     [ObserversRpc(ExcludeOwner = true)]
     private void ObserversChambered()
     {
